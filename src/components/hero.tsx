@@ -1,4 +1,4 @@
-import React from 'react'
+
 import banner from "../assets/app_banner.jpg"
 
 const Hero = () => {

@@ -1,4 +1,4 @@
-import React from "react";
+
 import MobileNav from "./mobileNav";
 import { Link } from "react-router-dom";
 import MainNav from "./mainNav";

@@ -1,6 +1,6 @@
 import UserProfileForm from '@/components/forms/user-profile-form/user-profile-form'
 import { useGetUser, useUpdateUser } from '@/api/userAPI'
-import React from 'react'
+
 
 export const UserProfile =()=> {
    const {currentUser, isLoading:isGetLoading} = useGetUser();
