@@ -58,10 +58,10 @@ const UserProfileForm = ({ onSave, isLoading,currentUser }: Props) => {
   },[currentUser,form]);
 
   return (
-    <Form {...form}>
+    <Form {...form} >
       <form
         onSubmit={form.handleSubmit(onSave)}
-        className="space-y-4 bg-gray-50 md:p-10 rounded-lg"
+        className="space-y-4 bg-gray-50 md:p-10 rounded-lg p-10"
       >
         <div>
           <h2 className="text-2xl font-bold"> User Profile From</h2>
@@ -134,8 +134,10 @@ const UserProfileForm = ({ onSave, isLoading,currentUser }: Props) => {
         />
 
         </div>
-     
-        {isLoading ? <LoadingButton/> : <Button type="submit" className="bg-blue-900">Submit</Button>}
+     <div className="flex justify-center md:justify-start">
+      
+     {isLoading ? <LoadingButton/> : <Button type="submit" className=" bg-blue-900 ">Submit</Button>}
+     </div>
       </form>
     </Form>
   );
