@@ -8,7 +8,7 @@ const Header = () => {
       <div className="container mx-auto flex justify-between items-center">
         <Link
           to={"/"}
-          className=" font-bold text-3xl tracking-tight text-blue-900"
+          className=" font-bold text-3xl tracking-tight text-blue-900 pl-5 md:pl-0"
         >
           ChowCart.com
         </Link>
