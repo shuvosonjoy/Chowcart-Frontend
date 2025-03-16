@@ -1,4 +1,4 @@
-import React from "react";
+
 
 const footer = () => {
   return (
@@ -8,7 +8,7 @@ const footer = () => {
           ChowCart.com
         </span>
         <span className="flex  items-center text-white font-bold tracking-tight gap-4">
-          <span>Privacy Policy </span>
+          <span>Privacy-Policy </span>
           <span>Terms of service</span>
         </span>
       </div>
