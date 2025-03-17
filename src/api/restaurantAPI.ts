@@ -53,7 +53,7 @@ export const useRestaurantAPI = () => {
       },
       body: restaurantFormData,
     });
-    console.log(response.status);
+   
     if (response.status !== 201) {
       throw new Error("Failed to create restaurant");
     }
@@ -80,3 +80,47 @@ export const useRestaurantAPI = () => {
     isLoading: isPending,
   };
 };
+
+
+export const useUpdateRestaurantAPI = () =>{
+  const {getAccessTokenSilently} = useAuth0();
+  const updateRestaurantRequest = async(restaurantFormData:FormData):Promise<Restaurant>=>{
+    const accessToken = await getAccessTokenSilently();
+    console.log(accessToken);
+    console.log("body: ",[...restaurantFormData.entries()]);
+    const response = await fetch(`${BASE_URL}/restaurant/update`,{
+      method:"PUT",
+      headers:{
+        Authorization: `Bearer ${accessToken}`,
+      },
+      body:restaurantFormData,
+    });
+
+    console.log("status",response.status);
+    if(response.status !== 200){
+      throw new Error("Failed to update restaurant");
+    }
+    return response.json();
+  }
+  const {
+    mutateAsync: UpdateRestaurant,
+    isPending,
+    isSuccess,
+    error,
+  }= useMutation<Restaurant,Error,FormData>({
+
+    mutationFn:updateRestaurantRequest,
+
+  });
+  if(isSuccess){
+    toast.success("Restaurant updated successfully");
+  }
+  if(error){
+    toast.error("Failed to update restaurant ");
+  }
+  return{
+    UpdateRestaurant,
+    isLoading:isPending,
+  }
+  
+}

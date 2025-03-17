@@ -1,12 +1,14 @@
-import { useGetRestaurantAPI, useRestaurantAPI } from "@/api/restaurantAPI";
+import { useGetRestaurantAPI, useRestaurantAPI, useUpdateRestaurantAPI } from "@/api/restaurantAPI";
 import ManageRestaurantForms from "@/components/forms/manage-restaurant-forms/manageRestaurantForms";
 
 const ManageRestaurantPage = () => {
-    const {CreateRestaurant,isLoading} = useRestaurantAPI();
+    const {CreateRestaurant,isLoading : isCreateLoading } = useRestaurantAPI();
     const {restaurant} = useGetRestaurantAPI();
+    const {UpdateRestaurant, isLoading:isUpdateLoading} = useUpdateRestaurantAPI();
    
+    const isEditing = !!restaurant;
     return (
-      <ManageRestaurantForms restaurant={restaurant} onSave={CreateRestaurant} isLoading={isLoading}/>
+      <ManageRestaurantForms restaurant={restaurant} onSave={isEditing? UpdateRestaurant:CreateRestaurant } isLoading={isCreateLoading || isUpdateLoading}/>
     );
 };
 
