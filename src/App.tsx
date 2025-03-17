@@ -5,6 +5,7 @@ import Login from './pages/login'
 import AuthCallback from './pages/auth/authCallbackPage'
 import { UserProfile } from './pages/user-profile-page'
 import { ProtectedRoute } from './pages/auth/protected-route'
+import ManageRestaurantPage from './pages/manageRestaurantPage'
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
       <Route path = '/auth-callback' element = {<AuthCallback/>}/>
       <Route element={<ProtectedRoute/>}>
       <Route path = '/user-profile' element = {<Layout><UserProfile/></Layout>}/>
+      <Route path = '/manage-restaurant' element = {<Layout><ManageRestaurantPage/></Layout>}/>
 
       </Route>
     

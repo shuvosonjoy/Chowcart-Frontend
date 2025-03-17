@@ -3,7 +3,7 @@ import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetDescription, SheetTitle, SheetTrigger } from "./ui/sheet";
 import { Menu } from "lucide-react";
 import { useAuth0 } from "@auth0/auth0-react";
-import UsernameMenu from "./userName";
+import UsernameMenu from "./userNameMenu";
 const MobileNav = () => {
   const {loginWithRedirect, isAuthenticated} = useAuth0();
   return (

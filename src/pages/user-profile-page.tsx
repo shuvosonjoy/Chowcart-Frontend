@@ -1,5 +1,6 @@
-import UserProfileForm from '@/components/forms/user-profile-form/user-profile-form'
+
 import { useGetUser, useUpdateUser } from '@/api/userAPI'
+import UserProfileForm from '@/components/forms/user-profile-form/userProfileForm';
 
 
 export const UserProfile =()=> {
