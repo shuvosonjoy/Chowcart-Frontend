@@ -96,7 +96,7 @@ export const useUpdateUser = () => {
     const {getAccessTokenSilently} = useAuth0();
     const getUserRequest = async ():Promise<User> =>{
         const userToken = await getAccessTokenSilently();
-        const res = await fetch(`${BASE_URL}/user`,{
+        const response = await fetch(`${BASE_URL}/user`,{
             method:'GET',
             headers:{
                 Authorization:`Bearer ${userToken}`,
@@ -104,11 +104,11 @@ export const useUpdateUser = () => {
             }
         });
         
-        if(res.status !== 200){
+        if(response.status !== 200){
             throw new Error('Failed to get user');
        
     };
-    return res.json();
+    return response.json();
   
     }
    const {data:currentUser,isLoading, error} = useQuery({ queryKey: ["fetchCurrentUser"], queryFn: getUserRequest });
