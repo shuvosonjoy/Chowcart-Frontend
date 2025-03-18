@@ -6,6 +6,7 @@ import AuthCallback from './pages/auth/authCallbackPage'
 import { UserProfile } from './pages/user-profile-page'
 import { ProtectedRoute } from './pages/auth/protected-route'
 import ManageRestaurantPage from './pages/manageRestaurantPage'
+import SearchPage from './pages/searchPage'
 
 
 function App() {
@@ -16,10 +17,12 @@ function App() {
       <Route path ='/login' element={<Login/>}/>
       <Route path ='*' element={<Navigate to ='/'/>}/>
       <Route path = '/auth-callback' element = {<AuthCallback/>}/>
+      <Route path = '/search/:city' element ={<Layout><SearchPage/></Layout>}/>
+
+      // Protected Routes
       <Route element={<ProtectedRoute/>}>
       <Route path = '/user-profile' element = {<Layout><UserProfile/></Layout>}/>
       <Route path = '/manage-restaurant' element = {<Layout><ManageRestaurantPage/></Layout>}/>
-
       </Route>
     
     </Routes>
