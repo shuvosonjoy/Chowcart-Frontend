@@ -45,7 +45,7 @@ const SearchPage = () => {
     }
     
     return (
-        <div className="grid grid-cols-1 lg:grid-cols-[250px_1fr] gap-5">
+        <div className="grid grid-cols-1 lg:grid-cols-[250px_1fr] gap-5 ml-5 mr-5 md:ml-0 md:mr-0">
             <div id="cuisines-list">
                 Cuisines List
             </div>
