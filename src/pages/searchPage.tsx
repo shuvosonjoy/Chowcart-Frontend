@@ -6,11 +6,13 @@ import { useState } from "react";
 import SearchBar, { SearchForm } from "@/components/searchBar";
 import { PaginationSelector } from "@/components/paginationSelector";
 import CuisineFilter from "@/components/cuisineFilter";
+import SortOptionDropdown from "@/components/sortOptionDropdown";
 
 export type searchType ={
     searchQuery:string;
     page:number;
     selectedCuisines: string[];
+    sortOption:string;
   
 
 }
@@ -22,10 +24,19 @@ const SearchPage = () => {
         searchQuery:"",
         page:1,
         selectedCuisines:[],
+        sortOption:"bestMatch",
     });
     const {results,isLoading} = useSearchRestaurants(searchState,city);
     const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
+
+    const setSortOption = (sortOption:string)=>{
+        setSearchState((prevState)=>({
+            ...prevState,
+            sortOption,
+            page:1
+        }))
+    }
     const setPage = (page:number)=>{
         setSearchState((prevState)=>({
             ...prevState,
@@ -89,8 +100,11 @@ const SearchPage = () => {
             <div id="restaurent-list">
                 <div>
                 <SearchBar searchQuery={searchState.searchQuery} onSubmit={handleSetSearchquery} placeholder="Search By cuisine or restaurant" onReset={onResetSearch}/>
-                    <SearchResultInfo total={results.pagination.total} city={city}/>
-                    {results.data.map((restaurant)=>{
+                  <div className="flex flex-col lg:flex-row gap-3 justify-between items-center mb-2 mt-2">
+                  <SearchResultInfo total={results.pagination.total} city={city}/>
+                    <SortOptionDropdown onChange={(value)=>setSortOption(value)} sortOption={searchState.sortOption}/>
+                  </div>
+                  {results.data.map((restaurant)=>{
                         return <SearchResultCard restaurant={restaurant} />
                     })}
                     <PaginationSelector page={results.pagination.page} pages={results.pagination.pages} onSetPage={setPage}/>

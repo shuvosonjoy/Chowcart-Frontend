@@ -15,6 +15,7 @@ export const useSearchRestaurants = (searchState?:searchType,city?:string) => {
       params.set("searchQuery",searchState?.searchQuery || "");
       params.set("page",searchState?.page.toString() || "1");
       params.set("selectedCuisines",searchState?.selectedCuisines.join(",") || "");
+      params.set("sortOption",searchState?.sortOption || "bestMatch");
       
      const response = await fetch (`${BASE_URL}/restaurant/search/${city}?${params.toString()}`);
      console.log(`${BASE_URL}/restaurant/search/${city}?${params.toString()}`);
