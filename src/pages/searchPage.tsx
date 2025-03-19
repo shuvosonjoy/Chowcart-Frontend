@@ -5,10 +5,14 @@ import SearchResultCard from "@/components/searchResultsCard";
 import { useState } from "react";
 import SearchBar, { SearchForm } from "@/components/searchBar";
 import { PaginationSelector } from "@/components/paginationSelector";
+import CuisineFilter from "@/components/cuisineFilter";
 
 export type searchType ={
     searchQuery:string;
     page:number;
+    selectedCuisines: string[];
+  
+
 }
 
 const SearchPage = () => {
@@ -16,9 +20,11 @@ const SearchPage = () => {
     const {city}  = useParams();
     const [searchState,setSearchState]=useState<searchType>({
         searchQuery:"",
-        page:1
+        page:1,
+        selectedCuisines:[],
     });
     const {results,isLoading} = useSearchRestaurants(searchState,city);
+    const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
     const setPage = (page:number)=>{
         setSearchState((prevState)=>({
@@ -27,6 +33,13 @@ const SearchPage = () => {
 
         }))
     }
+    const setSelectedCuisines = (selectedCuisines: string[]) => {
+        setSearchState((prevState) => ({
+          ...prevState,
+          selectedCuisines,
+          page: 1,
+        }));
+      };
 
     const handleSetSearchquery = (searchFormData:SearchForm)=>{
         setSearchState((prevState)=>(
@@ -63,9 +76,16 @@ const SearchPage = () => {
     
     return (
         <div className="grid grid-cols-1 lg:grid-cols-[250px_1fr] gap-5 ml-5 mr-5 md:ml-0 md:mr-0">
-            <div id="cuisines-list">
-                Cuisines List
-            </div>
+                <div id="cuisines-list">
+        <CuisineFilter
+          selectedCuisines={searchState.selectedCuisines}
+          onChange={setSelectedCuisines}
+          isExpanded={isExpanded}
+          onExpandedClick={() =>
+            setIsExpanded((prevIsExpanded) => !prevIsExpanded)
+          }
+        />
+      </div>
             <div id="restaurent-list">
                 <div>
                 <SearchBar searchQuery={searchState.searchQuery} onSubmit={handleSetSearchquery} placeholder="Search By cuisine or restaurant" onReset={onResetSearch}/>
