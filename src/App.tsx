@@ -7,6 +7,7 @@ import { UserProfile } from './pages/user-profile-page'
 import { ProtectedRoute } from './pages/auth/protected-route'
 import ManageRestaurantPage from './pages/manageRestaurantPage'
 import SearchPage from './pages/searchPage'
+import DetailsViewPage from './pages/detailsViewPage'
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
       <Route path ='*' element={<Navigate to ='/'/>}/>
       <Route path = '/auth-callback' element = {<AuthCallback/>}/>
       <Route path = '/search/:city' element ={<Layout><SearchPage/></Layout>}/>
+      <Route path = '/detail/:restaurantId' element ={<Layout><DetailsViewPage/></Layout>}/>
 
       // Protected Routes
       <Route element={<ProtectedRoute/>}>

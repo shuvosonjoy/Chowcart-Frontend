@@ -1,4 +1,4 @@
-import useSearchRestaurants from "@/api/restaurantAPI";
+import {useSearchRestaurants} from "@/api/restaurantAPI";
 import { useParams } from "react-router-dom";
 import { SearchResultInfo } from './../components/searchResultInfo';
 import SearchResultCard from "@/components/searchResultsCard";
