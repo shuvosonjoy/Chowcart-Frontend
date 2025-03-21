@@ -1,12 +1,13 @@
 import { useGetRestaurant } from "@/api/restaurantAPI";
 import MenuItem from "@/components/menuItem";
 import RestaurantInfo from "@/components/restaurantInfo";
-import { Card } from "@/components/ui/card";
+import { Card, CardFooter } from "@/components/ui/card";
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import {MenuItem as MenuItemType} from "@/types";
 import OrderSummary from "@/components/orderSummary";
+import CheckoutButton from "@/components/checkoutButton";
 
 
 
@@ -21,7 +22,10 @@ const DetailsViewPage = () => {
     const {restaurantId} = useParams();
     const {restaurant,isLoading} = useGetRestaurant(restaurantId);
 
-    const [cartItems,setCartItems] = useState<CartItems[]>([]);
+    const [cartItems,setCartItems] = useState<CartItems[]>(()=>
+     { const storedItem = sessionStorage.getItem(`cartItems-${restaurantId}`);
+     return storedItem ? JSON.parse(storedItem) : [];}
+    );
 
 
     const addToCart = (menuItem: MenuItemType) => {
@@ -49,6 +53,10 @@ const DetailsViewPage = () => {
               },
             ];
           }
+          sessionStorage.setItem(
+            `cartItems-${restaurantId}`,
+            JSON.stringify(updatedCartItems)
+          )
           return updatedCartItems;
         });
       };
@@ -59,6 +67,10 @@ const DetailsViewPage = () => {
     setCartItems((prevCartItems) => {
       const updatedCartItems = prevCartItems.filter(
         (item) => cartItem._id !== item._id
+      );
+      sessionStorage.setItem(
+        `cartItems-${restaurantId}`,
+        JSON.stringify(updatedCartItems)
       );
 
      
@@ -96,6 +108,9 @@ const DetailsViewPage = () => {
                   removeFromCart={removeFromCart}
                 />
               )}
+              <CardFooter>
+                <CheckoutButton/>
+              </CardFooter>
                 </Card></div>
 
         </div>
