@@ -33,10 +33,10 @@ const CuisineFilter = ({
   return (
     <>
       <div className="flex justify-between items-center px-2">
-        <div className="text-md font-semibold mb-2">Filter By Cuisine</div>
+        <div className="text-md font-bold font-sans mb-2">Filter By Cuisine</div>
         <div
           onClick={handleCuisinesReset}
-          className="text-sm font-semibold mb-2 underline cursor-pointer text-blue-500"
+          className="text-sm font-bold mb-2 underline cursor-pointer text-blue-800"
         >
           Reset Filters
         </div>
@@ -59,10 +59,10 @@ const CuisineFilter = ({
                 />
                 <Label
                   htmlFor={`cuisine_${cuisine}`}
-                  className={`flex flex-1 items-center cursor-pointer text-sm rounded-full px-4 py-2 font-semibold ${
+                  className={`flex flex-1 items-center cursor-pointer text-sm rounded-full px-4 py-2 font-bold text-blue-900 ${
                     isSelected
-                      ? "border border-green-600 text-green-600"
-                      : "border border-slate-300"
+                      ? "border border-green-600 text-green-600 "
+                      : "border border-blue-800"
                   }`}
                 >
                   {isSelected && <Check size={20} strokeWidth={3} />}

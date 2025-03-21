@@ -8,6 +8,7 @@ import { useParams } from "react-router-dom";
 import {MenuItem as MenuItemType} from "@/types";
 import OrderSummary from "@/components/orderSummary";
 import CheckoutButton from "@/components/checkoutButton";
+import { UserFormData } from "@/components/forms/user-profile-form/userProfileForm";
 
 
 
@@ -78,6 +79,10 @@ const DetailsViewPage = () => {
       return updatedCartItems;
     })
   }
+  const onCheckout = (userFormData: UserFormData) =>{
+      console.log(userFormData);
+
+  }
       
     if(isLoading){
         return <div>Loading...</div>;
@@ -109,7 +114,7 @@ const DetailsViewPage = () => {
                 />
               )}
               <CardFooter>
-                <CheckoutButton/>
+                <CheckoutButton disabled={cartItems.length===0} onCheckout={onCheckout} />
               </CardFooter>
                 </Card></div>
 

@@ -38,17 +38,19 @@ const formSchema = z.object({
     .max(255, { message: "Country must be between 1 and 255 characters" }),
 });
 
-type userFormData = z.infer<typeof formSchema>;
+export type UserFormData = z.infer<typeof formSchema>;
 
 type Props = {
   currentUser:User;
-  onSave: (data: userFormData) => void;
+  onSave: (data: UserFormData) => void;
   isLoading: boolean;
+  title?:string;
+  buttonText?:string;
 };
 
-const UserProfileForm = ({ onSave, isLoading,currentUser }: Props) => {
+const UserProfileForm = ({ onSave, isLoading,currentUser,title=" User Profile From",buttonText="Submit" }: Props) => {
 
-  const form = useForm<userFormData>({
+  const form = useForm<UserFormData>({
     resolver: zodResolver(formSchema),
     defaultValues:currentUser,
   });
@@ -64,7 +66,7 @@ const UserProfileForm = ({ onSave, isLoading,currentUser }: Props) => {
         className="space-y-4 bg-gray-50 md:p-10 rounded-lg p-10"
       >
         <div>
-          <h2 className="text-2xl font-bold"> User Profile From</h2>
+          <h2 className="text-2xl font-bold">{title}</h2>
           <FormDescription>Update your user profile</FormDescription>
         </div>
         <FormField
@@ -136,7 +138,7 @@ const UserProfileForm = ({ onSave, isLoading,currentUser }: Props) => {
         </div>
      <div className="flex justify-center md:justify-start">
       
-     {isLoading ? <LoadingButton/> : <Button type="submit" className=" bg-blue-900 ">Submit</Button>}
+     {isLoading ? <LoadingButton/> : <Button type="submit" className=" bg-blue-900 ">{buttonText}</Button>}
      </div>
       </form>
     </Form>
