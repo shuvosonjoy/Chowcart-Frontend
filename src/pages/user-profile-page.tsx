@@ -7,7 +7,9 @@ export const UserProfile =()=> {
    const {currentUser, isLoading:isGetLoading} = useGetUser();
     const {updateUser,isLoading:isUpdateLoading} = useUpdateUser();
     if(isGetLoading){
-        return <span>Loading.....</span>
+      <div className="flex justify-center items-center ">
+      <img src="/Circles-menu-3.gif" alt="Loading..." />
+    </div>
     }
     if(!currentUser){
         return <span>Failed to get user</span>

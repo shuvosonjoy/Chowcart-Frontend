@@ -114,9 +114,9 @@ const DetailsViewPage = () => {
   }
       
     if(isLoading){
-      return <div className="flex justify-center items-center h-screen">
-        <img src="/loadingSpinner.gif" alt="Loading..." />;
-      </div>
+      return  <div className="flex justify-center items-center ">
+      <img src="/Circles-menu-3.gif" alt="Loading..." />
+    </div>
     }
     return (
         <div className="flex flex-col gap-10">
