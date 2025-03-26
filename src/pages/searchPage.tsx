@@ -64,7 +64,7 @@ const SearchPage = () => {
 
   if (isLoading) {
     return (
-      <div className="flex justify-center items-center ">
+      <div className="flex justify-center items-center h-screen ">
         <img src="/Circles-menu-3.gif" alt="Loading..." />
       </div>
     );
