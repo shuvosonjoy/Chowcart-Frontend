@@ -1,4 +1,3 @@
-
 import { useGetMyOrders } from "@/api/orderAPI";
 import OrderStatusDetail from "@/components/orderStatusDetails";
 import OrderStatusHeader from "@/components/orderStatusHeader";
@@ -8,7 +7,11 @@ const OrderStatusPage = () => {
   const { orders, isLoading } = useGetMyOrders();
 
   if (isLoading) {
-    return "Loading...";
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <img src="/loadingSpinner.gif" alt="Loading..." />;
+      </div>
+    );
   }
 
   if (!orders || orders.length === 0) {

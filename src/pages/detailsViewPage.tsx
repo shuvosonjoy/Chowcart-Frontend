@@ -109,13 +109,14 @@ const DetailsViewPage = () => {
      
   
       const data = await createCheckoutSession(checkoutData);
-      console.log("this:",data);
       window.location.href = data.url;
 
   }
       
     if(isLoading){
-        return <div>Loading...</div>;
+      return <div className="flex justify-center items-center h-screen">
+        <img src="/loadingSpinner.gif" alt="Loading..." />;
+      </div>
     }
     return (
         <div className="flex flex-col gap-10">

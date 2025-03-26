@@ -63,7 +63,11 @@ const SearchPage = () => {
   };
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <img src="/loadingSpinner.gif" alt="Loading..." />;
+      </div>
+    );
   }
   if (!city || !results?.data) {
     return <div>No results found....</div>;
