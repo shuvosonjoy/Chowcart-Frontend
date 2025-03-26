@@ -2,6 +2,7 @@
 import { Button } from "./ui/button";
 import { useAuth0 } from "@auth0/auth0-react";
 import UserNameMenu from "./userNameMenu";
+import { Link } from "react-router-dom";
 
 
 const MainNav = () => {
@@ -9,9 +10,14 @@ const MainNav = () => {
 
   return (
     
-    <span>
+    <span className="flex space-x-2 items-center">
       {isAuthenticated ? (
+       <>
+       <Link to ="/order-status" className="font-bold font-sans hover:text-blue-900 ">
+       Order Status  
+       </Link>
        <UserNameMenu/>
+       </>
       ) : (
         <div>
           <Button

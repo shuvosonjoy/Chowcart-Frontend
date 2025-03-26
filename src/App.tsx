@@ -8,6 +8,7 @@ import { ProtectedRoute } from './pages/auth/protected-route'
 import ManageRestaurantPage from './pages/manageRestaurantPage'
 import SearchPage from './pages/searchPage'
 import DetailsViewPage from './pages/detailsViewPage'
+import OrderStatusPage from './pages/order-status-pages'
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
       <Route element={<ProtectedRoute/>}>
       <Route path = '/user-profile' element = {<Layout><UserProfile/></Layout>}/>
       <Route path = '/manage-restaurant' element = {<Layout><ManageRestaurantPage/></Layout>}/>
+      <Route path = '/order-status' element = {<Layout><OrderStatusPage/></Layout>}/>
       </Route>
     
     </Routes>
