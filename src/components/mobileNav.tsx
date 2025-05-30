@@ -36,12 +36,12 @@ const MobileNav = () => {
       <MobileNavLinks/>
         
         ) : (
-          <Button
+        <Button
           onClick={() => loginWithRedirect()}
-          className="flex-1 font-bold bg-orange-500"
-        >
+                  className="mt-4 px-4 py-2 font-semibold text-white bg-blue-900 hover:bg-blue-800 rounded-md w-fit">
           Log In
         </Button>
+
         )}
       </SheetContent>
     </Sheet>
